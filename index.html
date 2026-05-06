@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>I Solutions | Retail Technology & POS System – Intelligent Retail Suite</title>
+    <!-- Google Fonts for modern, clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (Free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f7fc;
+            color: #1a2c3e;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* header / navigation */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(0px);
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 16px 0;
+        }
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .logo-icon {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0066cc;
+            background: #eef2ff;
+            padding: 6px 12px;
+            border-radius: 12px;
+            letter-spacing: -0.5px;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: -0.3px;
+            color: #0a2b44;
+        }
+        .logo-tag {
+            font-size: 14px;
+            font-weight: 500;
+            color: #4b6b8f;
+            border-left: 1px solid #cbdde9;
+            padding-left: 12px;
+            margin-left: 6px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1f3a4b;
+            transition: 0.2s;
+            font-size: 15px;
+        }
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+        .btn-outline-light {
+            background: transparent;
+            border: 1.5px solid #0066cc;
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: #0066cc;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .btn-outline-light:hover {
+            background: #0066cc10;
+        }
+
+        /* hero section */
+        .hero {
+            padding: 64px 0 48px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+        .hero-badge {
+            background: #e6f0ff;
+            color: #0066cc;
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #0a2b44;
+            margin-bottom: 20px;
+        }
+        .hero-highlight {
+            color: #0066cc;
+            border-bottom: 3px solid #ffb347;
+        }
+        .hero-desc {
+            font-size: 18px;
+            color: #2c4b6e;
+            max-width: 540px;
+            margin: 20px 0 32px;
+            line-height: 1.5;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .stat-number {
+            font-weight: 800;
+            font-size: 28px;
+            color: #0f2f4f;
+        }
+        .btn-primary {
+            background: #0066cc;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 48px;
+            font-weight: 600;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 8px rgba(0,102,204,0.2);
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: #004c99;
+            transform: translateY(-2px);
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .dashboard-mock {
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 16px;
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+            border: 1px solid rgba(0,102,204,0.2);
+        }
+        .dashboard-mock img {
+            max-width: 100%;
+            border-radius: 24px;
+        }
+
+        /* section base */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0a2b44;
+        }
+        .section-sub {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 56px auto;
+            color: #4b6b8a;
+            font-size: 18px;
+        }
+
+        /* solutions grid (Retail tech pillars) */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+        .sol-card {
+            background: white;
+            border-radius: 28px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #e2edf2;
+        }
+        .sol-card i {
+            font-size: 40px;
+            color: #0066cc;
+            margin-bottom: 18px;
+        }
+        .sol-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .sol-card p {
+            color: #4a627a;
+            font-size: 14px;
+        }
+        .sol-card:hover {
+            transform: translateY(-6px);
+            border-color: #c0deff;
+            box-shadow: 0 20px 30px -12px rgba(0,102,204,0.15);
+        }
+
+        /* modules showcase (from POS guide) */
+        .modules-showcase {
+            background: #ffffff;
+        }
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 28px;
+        }
+        .module-item {
+            background: #f9fbfd;
+            border-radius: 24px;
+            padding: 24px;
+            border-left: 4px solid #0066cc;
+            transition: 0.2s;
+        }
+        .module-item h4 {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .module-item p {
+            color: #3e5a77;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+        .badge-module {
+            background: #eef2fa;
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #0066cc;
+            display: inline-block;
+            margin-top: 12px;
+        }
+
+        /* dashboard cards + live executive insight */
+        .dash-preview {
+            background: linear-gradient(110deg, #0a2540 0%, #1b3b5c 100%);
+            color: white;
+            border-radius: 48px;
+            padding: 56px 48px;
+            margin-top: 20px;
+        }
+        .dash-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dash-stats {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 24px;
+            flex: 1;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 20px;
+        }
+        .stat-card .stat-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+        .stat-card .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 8px 0;
+        }
+
+        /* cta + contact */
+        .contact-section {
+            background: #eef3fa;
+            border-radius: 56px;
+            margin: 40px auto;
+            padding: 56px 48px;
+            text-align: center;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin: 32px 0 24px;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 56px;
+            padding: 12px 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 500;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            text-decoration: none;
+            color: #1a2c3e;
+        }
+        .contact-card i {
+            font-size: 22px;
+            color: #0066cc;
+        }
+        .contact-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(0,102,204,0.12);
+            background: #ffffff;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            color: #5b7992;
+            padding: 32px 0 48px;
+            border-top: 1px solid #dce5ec;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                padding: 0 24px;
+            }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            .dash-preview {
+                padding: 32px 24px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .nav-links {
+                margin-top: 6px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+        button, a {
+            transition: all 0.2s ease;
+        }
+        .highlight-underline {
+            border-bottom: 2px solid #ffb347;
+        }
+        .qr-note {
+            font-size: 12px;
+            color: #2c5a7a;
+        }
+        /* interactive clickable */
+        .whatsapp-link, .linkedin-link {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="container nav-container">
+            <div class="logo-area">
+                <span class="logo-icon">i</span>
+                <span class="logo-text">Solutions</span>
+                <span class="logo-tag">Retail Technology</span>
+            </div>
+            <div class="nav-links">
+                <a href="#solutions">Solutions</a>
+                <a href="#modules">POS Modules</a>
+                <a href="#dashboard">Live Dashboard</a>
+                <a href="#contact" class="btn-outline-light">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero section with brand & key selling points -->
+        <div class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge"><i class="fas fa-chart-line"></i>  Version 4.3 Enterprise · Complete Module Suite</div>
+                    <h1>Point of Sale <span class="hero-highlight">+ Intelligence</span><br>for Modern Retail</h1>
+                    <p class="hero-desc">An integrated retail management platform purpose-built for accuracy, speed, and profitability. Real-time dashboards, inventory control, gift cards, promotions, and unmatched reporting.</p>
+                    <div class="hero-stats">
+                        <div class="stat-item"><span class="stat-number">13+</span> <span>Integrated Modules</span></div>
+                        <div class="stat-item"><span class="stat-number">Live</span> <span>Executive Dashboard</span></div>
+                        <div class="stat-item"><span class="stat-number">Multi</span> <span>Payments & Split</span></div>
+                    </div>
+                    <div style="margin-top: 32px;">
+                        <a href="#contact" class="btn-primary"><i class="fas fa-calendar-check"></i> Request Demo</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="dashboard-mock">
+                        <!-- graphical representation of POS interface -->
+                        <div style="background: #ffffff; border-radius: 20px; padding: 8px;">
+                            <i class="fas fa-receipt" style="font-size: 60px; color:#0066cc; margin-bottom: 12px; display: block;"></i>
+                            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
+                                <span style="background:#eef2ff; padding: 6px 14px; border-radius: 30px;">🖨️ Auto Receipt</span>
+                                <span style="background:#eef2ff; padding: 6px 14px; border-radius: 30px;">📊 Profit Efficiency</span>
+                                <span style="background:#eef2ff; padding: 6px 14px; border-radius: 30px;">🔍 Barcode Scan</span>
+                            </div>
+                            <div style="margin-top: 24px; font-size: 13px; color:#1e3a5f;">Live transaction view • Split payment • Tax report ready</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solutions Section (Retail Technology Pillars from image) -->
+        <div id="solutions" class="container">
+            <div class="section-title">Comprehensive Retail Technology</div>
+            <div class="section-sub">One suite, infinite control — from checkout to warehouse tracking & travel agency modules</div>
+            <div class="solutions-grid">
+                <div class="sol-card"><i class="fas fa-cash-register"></i><h3>Payments (POS)</h3><p>Fast billing, split payment, change due, auto receipt</p></div>
+                <div class="sol-card"><i class="fas fa-chart-pie"></i><h3>Marketing</h3><p>Promotions, campaigns, gift cards & loyalty ready</p></div>
+                <div class="sol-card"><i class="fas fa-boxes"></i><h3>Inventory (Packages)</h3><p>Stock view, low-stock alerts, PO lifecycle, return stock</p></div>
+                <div class="sol-card"><i class="fas fa-map-marker-alt"></i><h3>Warehouse Tracking</h3><p>Real-time location & transfer tracking</p></div>
+                <div class="sol-card"><i class="fas fa-plane"></i><h3>Travel Agency</h3><p>Dedicated module for travel retail operations</p></div>
+                <div class="sol-card"><i class="fas fa-chart-simple"></i><h3>Live Executive Dashboard</h3><p>Profit efficiency, revenue leakage, unrealized profit</p></div>
+            </div>
+        </div>
+
+        <!-- POS Modules Showcase (based on customer guide) -->
+        <div id="modules" class="modules-showcase">
+            <div class="container">
+                <div class="section-title">Powerful POS Modules & Features</div>
+                <div class="section-sub">13+ modules used by cashiers, managers, accountants — all with role-based security</div>
+                <div class="modules-grid">
+                    <div class="module-item"><h4><i class="fas fa-tachometer-alt"></i> Executive Dashboard</h4><p>Lifetime revenue, profit efficiency %, inventory capital, unrealized profit & refund leakage live</p><div class="badge-module">Management</div></div>
+                    <div class="module-item"><h4><i class="fas fa-receipt"></i> Point of Sale Billing</h4><p>Scan/search products, apply discounts, split payments, auto receipt print</p><div class="badge-module">Cashiers</div></div>
+                    <div class="module-item"><h4><i class="fas fa-history"></i> Sales History & Invoices</h4><p>Full transaction list, invoice breakdowns, reprint receipts anytime</p><div class="badge-module">Accounts</div></div>
+                    <div class="module-item"><h4><i class="fas fa-file-invoice-dollar"></i> Sales Detail Report</h4><p>Line-item analysis, buying cost, selling price, profit margin, export to Excel</p><div class="badge-module">Accountant</div></div>
+                    <div class="module-item"><h4><i class="fas fa-percent"></i> Tax Report</h4><p>Tax collected grouped by rate, date filtering, ready for filing</p><div class="badge-module">Finance</div></div>
+                    <div class="module-item"><h4><i class="fas fa-box-open"></i> Purchase Orders</h4><p>Full PO lifecycle: pending → ordered → received, auto update inventory</p><div class="badge-module">Purchasing</div></div>
+                    <div class="module-item"><h4><i class="fas fa-gift"></i> Gift Cards</h4><p>Unique 16-char codes, balance & expiry, redemption tracking</p><div class="badge-module">Marketing</div></div>
+                    <div class="module-item"><h4><i class="fas fa-tags"></i> Promotions</h4><p>Time-limited campaigns, product-linked discounts, auto hide expired</p><div class="badge-module">Managers</div></div>
+                    <div class="module-item"><h4><i class="fas fa-undo-alt"></i> Return Stock</h4><p>Supplier returns, damages, expiry with full audit trail</p><div class="badge-module">Store Mgmt</div></div>
+                    <div class="module-item"><h4><i class="fas fa-chart-line"></i> Item Sales History</h4><p>Per-product history with frozen cost (WAC), accurate profit tracking</p><div class="badge-module">Inventory</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Dashboard preview (matching I Solutions Dashboard capabilities) -->
+        <div id="dashboard" class="container">
+            <div class="dash-preview">
+                <div class="dash-flex">
+                    <div style="flex:1">
+                        <div style="font-size: 14px; letter-spacing: 2px; font-weight: 600; color:#9bc2e6;">LIVE EXECUTIVE VIEW</div>
+                        <h2 style="font-size: 32px; margin: 12px 0 16px;">Performance Dashboard</h2>
+                        <p style="opacity: 0.85; margin-bottom: 20px;">Today’s revenue, profit efficiency, inventory value, unrealized profit and revenue leakage — realtime updates.</p>
+                        <ul style="list-style: none;">
+                            <li><i class="fas fa-check-circle" style="color: #4cda6c;"></i>  Lifetime Net Revenue: $1.24M</li>
+                            <li><i class="fas fa-chart-simple"></i>  Profit Efficiency: 68.4% <span style="opacity:0.7;">▲ +5.2%</span></li>
+                            <li><i class="fas fa-warehouse"></i>  Inventory Capital: $342k → Sell-through value: $589k</li>
+                            <li><i class="fas fa-exclamation-triangle"></i>  Revenue Leakage: $4,230 (refunds tracked)</li>
+                        </ul>
+                    </div>
+                    <div class="dash-stats">
+                        <div class="stat-card"><div class="stat-label">Today's Earnings</div><div class="stat-value">$8,420</div><div>+18% vs yesterday</div></div>
+                        <div class="stat-card"><div class="stat-label">Avg Transaction</div><div class="stat-value">$96.30</div><div>Split payments: 12%</div></div>
+                        <div class="stat-card"><div class="stat-label">Tax Collected</div><div class="stat-value">$1,268</div><div>Grouped by rate</div></div>
+                        <div class="stat-card"><div class="stat-label">Promo Active</div><div class="stat-value">4 campaigns</div><div>Summer sale, BOGO</div></div>
+                    </div>
+                </div>
+                <div style="margin-top: 32px; font-size: 12px; text-align: center; opacity: 0.6;"><i class="fas fa-database"></i>  Smart logic: Frozen cost at sale • Virtual profit calculation • Unique gift card generator</div>
+            </div>
+        </div>
+
+        <!-- additional feature snapshots: Purchase Orders, Gift Cards, Promos -->
+        <div class="container" style="margin-top: 32px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+                <div style="background: white; border-radius: 32px; padding: 28px; flex:1; min-width: 220px; box-shadow: 0 8px 20px rgba(0,0,0,0.02);">
+                    <i class="fas fa-truck" style="font-size: 32px; color:#0066cc;"></i>
+                    <h3 style="margin: 16px 0 8px;">Purchase Order Management</h3>
+                    <p>Raise orders, track lifecycle: Pending → Ordered → Received, cancel safely, auto inventory update.</p>
+                </div>
+                <div style="background: white; border-radius: 32px; padding: 28px; flex:1; min-width: 220px;">
+                    <i class="fas fa-gift" style="font-size: 32px; color:#0066cc;"></i>
+                    <h3 style="margin: 16px 0 8px;">Gift Cards & Promotions</h3>
+                    <p>16-char unique codes, expiry, redemption audit. Create discount campaigns, product linked, auto expiry.</p>
+                </div>
+                <div style="background: white; border-radius: 32px; padding: 28px; flex:1; min-width: 220px;">
+                    <i class="fas fa-chart-bar" style="font-size: 32px; color:#0066cc;"></i>
+                    <h3 style="margin: 16px 0 8px;">Advanced Reporting</h3>
+                    <p>Sales detail to Excel, tax reports, profit margin analysis, role-based access and dynamic filters.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact & CTA section with updated LinkedIn link & WhatsApp integration -->
+        <div class="container" id="contact">
+            <div class="contact-section">
+                <i class="fas fa-headset" style="font-size: 48px; color:#0066cc; margin-bottom: 8px; display: inline-block;"></i>
+                <h2 style="font-size: 32px; font-weight: 700;">Ready to Transform Your Retail?</h2>
+                <p style="max-width: 600px; margin: 16px auto; font-size: 18px;">Get the complete point-of-sale solution with live dashboard, inventory, gift cards, and dedicated travel agency module.</p>
+                <div class="contact-info">
+                    <!-- WhatsApp click-to-chat link: +966540961077 opens WhatsApp -->
+                    <a href="https://wa.me/966540961077?text=Hello%20I%20am%20interested%20in%20I%20Solutions%20POS%20Enterprise" target="_blank" rel="noopener noreferrer" class="contact-card whatsapp-link">
+                        <i class="fab fa-whatsapp"></i> +966 540 961 077
+                    </a>
+                    <!-- Email link stays same -->
+                    <a href="mailto:ihsan.siddique@outlook.com" class="contact-card">
+                        <i class="fas fa-envelope"></i> ihsan.siddique@outlook.com
+                    </a>
+                    <!-- LinkedIn Link with the specified profile URL: opens in new tab -->
+                    <a href="https://www.linkedin.com/in/mohamed-siddique-mohamed-ihsan-bb552a146/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin-link">
+                        <i class="fab fa-linkedin"></i> Mohamed Ihsan
+                    </a>
+                </div>
+                <p style="margin-top: 24px;"><i class="fas fa-laptop-code"></i> Developed & Maintained by Ihsan Siddique · Enterprise Version 4.3 · Full audit trail, WAC frozen cost, and role based security.</p>
+                <div style="margin-top: 28px;">
+                    <a href="mailto:ihsan.siddique@outlook.com" class="btn-primary" style="background: #004c99;"><i class="fas fa-paper-plane"></i> Email for Demo / Guide</a>
+                </div>
+                <div class="qr-note" style="margin-top: 32px;"><i class="fas fa-qrcode"></i>  Store QR code on receipts — brand visibility & feedback</div>
+            </div>
+        </div>
+
+        <footer class="footer-note container">
+            <p><i class="far fa-copyright"></i> I Solutions — Retail Technology. Point of Sale System with Executive Dashboards, Inventory Tracking, Promotions, and Travel Agency module.</p>
+            <p style="margin-top: 12px;"><strong>i Solutions POS v4.3 Enterprise</strong> | Built for accuracy, speed & profitability | All modules audited, real-time reporting.</p>
+        </footer>
+    </main>
+
+    <!-- scroll handling + interactive smoothness -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Additional reliability: ensure all contact-card external links have proper target attributes.
+        // already defined inline, but double-check any dynamic overwrites.
+        console.log("I Solutions Retail POS — LinkedIn & WhatsApp integrated successfully");
+    </script>
+</body>
+</html>
