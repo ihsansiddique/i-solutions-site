@@ -287,15 +287,212 @@ footer a{color:var(--gold);text-decoration:none;}
 .t-name{font-weight:700;font-size:14px;color:var(--navy);}
 .t-role{font-size:12px;color:var(--mid);}
 
-/* responsive */
-@media(max-width:960px){
-  .hero-inner,.mod-detail-grid{grid-template-columns:1fr;}
-  .hero h1{font-size:44px;}
-  .mod-grid,.why-grid,.features-grid,.tech-grid,.wf-detail-list,.testimony-grid{grid-template-columns:1fr;}
-  .role-panel.active{grid-template-columns:1fr;}
+/* ════════════════════════════════════════════
+   RESPONSIVE WEB DESIGN
+   Breakpoints:
+   • xl  > 1280px  — large desktops (default)
+   • lg  ≤ 1280px  — laptops / small desktops
+   • md  ≤ 1024px  — tablets landscape
+   • sm  ≤ 768px   — tablets portrait / large phones
+   • xs  ≤ 480px   — mobile phones
+════════════════════════════════════════════ */
+
+/* ── HAMBURGER (hidden on desktop) ── */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:1.5px solid var(--gold-border);border-radius:8px;cursor:pointer;padding:8px;}
+.hamburger span{display:block;height:2px;background:var(--navy);border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* mobile nav drawer */
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;z-index:998;background:white;border-bottom:1px solid var(--gold-border);box-shadow:0 8px 24px var(--shadow2);padding:16px 20px 24px;flex-direction:column;gap:4px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav button,.mobile-nav a{width:100%;text-align:left;padding:12px 16px;border-radius:10px;border:none;background:none;cursor:pointer;font-family:var(--fb);font-size:15px;color:var(--slate);font-weight:500;transition:all .2s;text-decoration:none;display:flex;align-items:center;gap:10px;}
+.mobile-nav button:hover,.mobile-nav a:hover,.mobile-nav button.active{background:var(--gold-soft);color:var(--gold);}
+.mobile-nav .mob-cta{background:linear-gradient(135deg,var(--gold2),var(--gold))!important;color:white!important;font-weight:700!important;margin-top:8px;border-radius:10px;justify-content:center;}
+
+/* ── LARGE DESKTOP ≤ 1280px ── */
+@media(max-width:1280px){
+  .wrap,.nav-inner,.hero-inner{padding-left:28px;padding-right:28px;}
+  .hero h1{font-size:56px;}
+  .stitle{font-size:44px;}
+  .hero-inner{gap:56px;}
+}
+
+/* ── LAPTOP / SMALL DESKTOP ≤ 1024px ── */
+@media(max-width:1024px){
+  .wrap,.nav-inner,.hero-inner{padding-left:24px;padding-right:24px;}
+  .hero h1{font-size:48px;}
+  .stitle{font-size:38px;}
+  .hero-inner{gap:40px;}
+  .mod-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+  .roles-grid{grid-template-columns:repeat(3,1fr);}
+  .features-grid{grid-template-columns:repeat(2,1fr);}
+  .tech-grid{grid-template-columns:1fr;}
+  .mod-detail-grid{grid-template-columns:240px 1fr;gap:24px;}
+  .comparison-table th:first-child{width:200px;}
+  .wf-detail-list{grid-template-columns:1fr;}
+  /* Workflow page side panel */
+  #page-workflow .wrap > div[style*="grid-template-columns:1fr 340px"]{
+    display:flex;flex-direction:column;gap:32px;
+  }
+  #page-workflow .wrap > div > div:last-child{position:static;}
+  /* Contact grid */
+  #page-contact .wrap > div > div[style*="grid-template-columns:1fr 1fr"]{
+    display:flex;flex-direction:column;gap:28px;
+  }
+}
+
+/* ── TABLET PORTRAIT ≤ 768px ── */
+@media(max-width:768px){
+  /* NAV */
   .nav-links{display:none;}
-  .steps-row{flex-direction:column;gap:26px;}.steps-row::before{display:none;}
+  .hamburger{display:flex;}
+
+  .wrap,.nav-inner,.hero-inner{padding-left:20px;padding-right:20px;}
+  .section{padding:64px 0;}
+  .page-hero{padding:120px 0 52px;}
+  footer{padding:32px 20px;}
+
+  /* HERO */
+  .hero{min-height:auto;padding:110px 0 60px;}
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  .hero h1{font-size:42px;}
+  .hero-desc{font-size:16px;max-width:100%;}
+  .hero-stats{gap:20px;flex-wrap:wrap;}
+  /* hide floating dashboard chips on tablet */
+  .fchip{display:none;}
+  /* flatten 3D effect on touch */
+  .dash-wrapper{transform:none!important;}
+
+  /* GRIDS → 2 col */
+  .mod-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+  .why-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+  .features-grid{grid-template-columns:1fr;gap:14px;}
+  .tech-grid{grid-template-columns:1fr;}
+  .roles-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+
+  /* STEPS — vertical */
+  .steps-row{flex-direction:column;gap:0;align-items:center;}
+  .steps-row::before{display:none;}
+  .step{display:flex;align-items:flex-start;gap:16px;text-align:left;width:100%;max-width:480px;padding:16px 0;border-bottom:1px solid var(--light2);}
+  .step:last-child{border-bottom:none;}
+  .sc{width:52px;height:52px;flex-shrink:0;margin:0;font-size:18px;}
+  .step h4{margin-bottom:4px;}
+
+  /* MODULES sidebar → horizontal scroll select */
+  .mod-detail-grid{grid-template-columns:1fr;gap:20px;}
   .mod-sidebar{position:static;}
+  .mod-sidebar-list{overflow-x:auto;border-radius:12px;}
+  .mod-sidebar-list h4{display:none;}
+  .mod-sidebar-list .sb-scroll-wrap{display:flex;overflow-x:auto;padding:8px 12px;gap:6px;scrollbar-width:none;}
+  .mod-sidebar-list .sb-scroll-wrap::-webkit-scrollbar{display:none;}
+  .mod-sidebar-list button{width:auto;white-space:nowrap;padding:9px 14px;border-bottom:none;border-radius:8px;font-size:12.5px;flex-shrink:0;}
+
+  /* ROLES */
+  .roles-tabs{gap:8px;}
+  .role-tab{padding:9px 14px;font-size:13px;}
+  .role-panel.active{grid-template-columns:1fr;gap:20px;}
+
+  /* CTA */
+  .cta-section h2{font-size:36px;}
+  .cta-sub{font-size:15.5px;}
+
+  /* TYPOGRAPHY */
+  .stitle{font-size:34px;}
+  .ssub{font-size:15px;}
+
+  /* COMPARISON TABLE */
+  .comparison-table{font-size:12.5px;}
+  .comparison-table th,.comparison-table td{padding:12px 14px;}
+  .comparison-table th:first-child{width:auto;min-width:120px;}
+  /* hide 3rd column on tablet */
+  .comparison-table th:nth-child(4),.comparison-table td:nth-child(4){display:none;}
+
+  /* WORKFLOW page stacked */
+  .workflow-timeline{padding-left:32px;}
+  .wf-card h3{font-size:17px;}
+
+  /* CONTACT */
+  #page-contact .wrap > div > div[style*="grid-template-columns:1fr 1fr"]{
+    display:flex;flex-direction:column;gap:24px;
+  }
+}
+
+/* ── MOBILE PHONE ≤ 480px ── */
+@media(max-width:480px){
+  .nav-inner{height:62px;padding:0 16px;}
+  .logo-name{font-size:15px;}
+  .logo-sub{display:none;}
+
+  .wrap,.hero-inner{padding-left:16px;padding-right:16px;}
+  .section{padding:52px 0;}
+  .page-hero{padding:102px 0 44px;}
+  footer{padding:28px 16px;}
+
+  /* HERO */
+  .hero{padding:100px 0 52px;}
+  .hero h1{font-size:34px;letter-spacing:0;}
+  .hero-badge{font-size:10px;padding:6px 12px;}
+  .hero-desc{font-size:15px;}
+  .hero-btns{flex-direction:column;gap:10px;}
+  .btn-primary,.btn-outline{width:100%;justify-content:center;padding:13px 20px;}
+  .hero-stats{gap:14px;}
+  .stat-n{font-size:26px;}
+
+  /* KPI grid on dashboard → stack */
+  .kpi-g{grid-template-columns:1fr;}
+
+  /* GRIDS → single column */
+  .mod-grid{grid-template-columns:1fr;gap:14px;}
+  .why-grid{grid-template-columns:1fr;gap:14px;}
+  .roles-grid{grid-template-columns:1fr;gap:12px;}
+  .features-grid{grid-template-columns:1fr;}
+
+  /* TYPOGRAPHY */
+  .stitle{font-size:28px;}
+  .ssub{font-size:14.5px;}
+  .section-eyebrow,.eyebrow{font-size:10px;}
+  .cta-section h2{font-size:28px;}
+  .cta-sub{font-size:14.5px;}
+
+  /* STEPS */
+  .step{flex-direction:column;align-items:center;text-align:center;padding:20px 0;}
+  .sc{margin-bottom:10px;}
+
+  /* MODULE sidebar scrollable pills */
+  .mod-sidebar-list button{font-size:11.5px;padding:8px 12px;}
+
+  /* ROLES TABS */
+  .roles-tabs{flex-direction:column;gap:6px;}
+  .role-tab{width:100%;justify-content:flex-start;padding:12px 16px;}
+
+  /* WHY cards */
+  .why-card{padding:24px 20px;}
+
+  /* WORKFLOW */
+  .workflow-timeline{padding-left:24px;}
+  .wf-dot{left:-28px;width:28px;height:28px;font-size:12px;}
+  .wf-card{padding:20px;}
+  .wf-card h3{font-size:16px;}
+  .wf-detail-list{grid-template-columns:1fr;}
+
+  /* COMPARISON TABLE */
+  .comparison-table{font-size:11.5px;}
+  .comparison-table th,.comparison-table td{padding:10px 10px;}
+  /* On mobile show only feature + i Solutions columns */
+  .comparison-table th:nth-child(3),.comparison-table td:nth-child(3){display:none;}
+  .comparison-table th:nth-child(4),.comparison-table td:nth-child(4){display:none;}
+
+  /* CONTACT page */
+  #page-contact .wrap > div > div{grid-template-columns:1fr!important;display:flex!important;flex-direction:column!important;}
+
+  /* CTA chips */
+  .trust-row{flex-direction:column;align-items:center;}
+  .tchip{width:100%;justify-content:center;}
+  .c-cards{flex-direction:column;align-items:stretch;}
+  .c-card{justify-content:flex-start;}
 }
 </style>
 </head>
@@ -316,8 +513,21 @@ footer a{color:var(--gold);text-decoration:none;}
       <li><button onclick="showPage('why')" id="nav-why">Why Us</button></li>
       <li><button onclick="showPage('contact')" class="nav-btn" id="nav-contact">Get a Demo</button></li>
     </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <button onclick="showPage('home');closeMobileNav()"><i class="fas fa-house" style="color:var(--gold);width:18px"></i> Home</button>
+  <button onclick="showPage('modules');closeMobileNav()"><i class="fas fa-grip" style="color:var(--gold);width:18px"></i> Modules</button>
+  <button onclick="showPage('workflow');closeMobileNav()"><i class="fas fa-route" style="color:var(--gold);width:18px"></i> How It Works</button>
+  <button onclick="showPage('roles');closeMobileNav()"><i class="fas fa-users" style="color:var(--gold);width:18px"></i> Staff Roles</button>
+  <button onclick="showPage('why');closeMobileNav()"><i class="fas fa-trophy" style="color:var(--gold);width:18px"></i> Why Us</button>
+  <button class="mob-cta" onclick="showPage('contact');closeMobileNav()"><i class="fas fa-paper-plane"></i> Get a Demo</button>
+</div>
 
 <!-- ═══════════════════════════════════════
      PAGE: HOME
@@ -476,6 +686,7 @@ footer a{color:var(--gold);text-decoration:none;}
         <div class="mod-sidebar">
           <div class="mod-sidebar-list">
             <h4>All Modules</h4>
+            <div class="sb-scroll-wrap">
             <button onclick="switchModule('dashboard')" id="sb-dashboard" class="active"><i class="fas fa-gauge-high"></i> Executive Dashboard</button>
             <button onclick="switchModule('pos')" id="sb-pos"><i class="fas fa-cash-register"></i> Point of Sale</button>
             <button onclick="switchModule('sales')" id="sb-sales"><i class="fas fa-file-invoice"></i> Sales & Reports</button>
@@ -485,6 +696,7 @@ footer a{color:var(--gold);text-decoration:none;}
             <button onclick="switchModule('promos')" id="sb-promos"><i class="fas fa-tags"></i> Promotions</button>
             <button onclick="switchModule('returns')" id="sb-returns"><i class="fas fa-rotate-left"></i> Return Stock</button>
             <button onclick="switchModule('security')" id="sb-security"><i class="fas fa-shield-halved"></i> Login & Security</button>
+            </div>
           </div>
         </div>
 
@@ -1070,6 +1282,26 @@ footer a{color:var(--gold);text-decoration:none;}
 </div>
 
 <script>
+// ── MOBILE NAV ──
+function toggleMobileNav(){
+  const mn=document.getElementById('mobileNav');
+  const hb=document.getElementById('hamburger');
+  mn.classList.toggle('open');
+  hb.classList.toggle('open');
+}
+function closeMobileNav(){
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+// close drawer when clicking outside
+document.addEventListener('click',function(e){
+  const mn=document.getElementById('mobileNav');
+  const hb=document.getElementById('hamburger');
+  if(mn.classList.contains('open') && !mn.contains(e.target) && !hb.contains(e.target)){
+    closeMobileNav();
+  }
+});
+
 // ── PAGE ROUTER ──
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
