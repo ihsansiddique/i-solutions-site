@@ -26,7 +26,7 @@ body{font-family:var(--fb);background:var(--white);color:var(--navy);overflow-x:
 
 /* ─ NAV ─ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-border);box-shadow:0 2px 20px var(--shadow);}
-.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:62px;}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer;}
 .logo-box{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--gold2),var(--gold));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(184,145,42,0.35),inset 0 1px 0 rgba(255,255,255,0.25);animation:logoSpin 7s ease-in-out infinite;}
 @keyframes logoSpin{0%,100%{transform:rotateY(0) rotateX(0)}30%{transform:rotateY(18deg) rotateX(5deg)}70%{transform:rotateY(-12deg) rotateX(-3deg)}}
@@ -56,7 +56,7 @@ body{font-family:var(--fb);background:var(--white);color:var(--navy);overflow-x:
 /* ══════════════════════════════
    HOME PAGE
 ══════════════════════════════ */
-.hero{min-height:100vh;background:linear-gradient(155deg,var(--white) 0%,var(--sky) 35%,var(--light) 65%,var(--off) 100%);display:flex;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden;}
+.hero{min-height:100vh;background:linear-gradient(155deg,var(--white) 0%,var(--sky) 35%,var(--light) 65%,var(--off) 100%);display:flex;align-items:center;padding:100px 0 80px;position:relative;overflow:hidden;}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;}
 .orb1{width:550px;height:550px;background:radial-gradient(circle,rgba(184,145,42,.16) 0%,transparent 70%);top:-120px;right:-80px;animation:orbF 9s ease-in-out infinite;}
 .orb2{width:380px;height:380px;background:radial-gradient(circle,rgba(8,145,178,.11) 0%,transparent 70%);bottom:-40px;left:-60px;animation:orbF 11s ease-in-out infinite reverse;}
@@ -164,7 +164,7 @@ footer a{color:var(--gold);text-decoration:none;}
 /* ══════════════════════════════
    MODULES PAGE
 ══════════════════════════════ */
-.page-hero{padding:140px 0 72px;background:linear-gradient(155deg,var(--white) 0%,var(--sky) 45%,var(--light) 100%);position:relative;overflow:hidden;}
+.page-hero{padding:100px 0 64px;background:linear-gradient(155deg,var(--white) 0%,var(--sky) 45%,var(--light) 100%);position:relative;overflow:hidden;}
 .page-hero .orb-sm{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;}
 .page-hero .orb-sm.a{width:350px;height:350px;background:radial-gradient(circle,rgba(184,145,42,.14),transparent 70%);top:-80px;right:-60px;animation:orbF 8s ease-in-out infinite;}
 .page-hero .orb-sm.b{width:250px;height:250px;background:radial-gradient(circle,rgba(8,145,178,.1),transparent 70%);bottom:-40px;left:-30px;animation:orbF 10s ease-in-out infinite reverse;}
@@ -298,18 +298,45 @@ footer a{color:var(--gold);text-decoration:none;}
 ════════════════════════════════════════════ */
 
 /* ── HAMBURGER (hidden on desktop) ── */
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:1.5px solid var(--gold-border);border-radius:8px;cursor:pointer;padding:8px;}
-.hamburger span{display:block;height:2px;background:var(--navy);border-radius:2px;transition:all .3s;}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.hamburger{
+  display:none;
+  flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  width:44px;height:44px;
+  background:var(--gold-soft);
+  border:2px solid var(--gold);
+  border-radius:10px;cursor:pointer;padding:0;flex-shrink:0;
+}
+.hamburger span{display:block;width:20px;height:2.5px;background:var(--navy);border-radius:2px;transition:all .3s ease;}
+.hamburger.open{background:var(--gold);border-color:var(--gold);}
+.hamburger.open span{background:white;}
+.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
 
-/* mobile nav drawer */
-.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;z-index:998;background:white;border-bottom:1px solid var(--gold-border);box-shadow:0 8px 24px var(--shadow2);padding:16px 20px 24px;flex-direction:column;gap:4px;}
+.mobile-nav{
+  display:none;
+  position:fixed;top:62px;left:0;right:0;z-index:998;
+  background:white;border-bottom:2px solid var(--gold-border);
+  box-shadow:0 12px 32px rgba(15,39,68,.18);
+  padding:12px 16px 20px;flex-direction:column;gap:4px;
+  max-height:calc(100vh - 62px);overflow-y:auto;
+}
 .mobile-nav.open{display:flex;}
-.mobile-nav button,.mobile-nav a{width:100%;text-align:left;padding:12px 16px;border-radius:10px;border:none;background:none;cursor:pointer;font-family:var(--fb);font-size:15px;color:var(--slate);font-weight:500;transition:all .2s;text-decoration:none;display:flex;align-items:center;gap:10px;}
-.mobile-nav button:hover,.mobile-nav a:hover,.mobile-nav button.active{background:var(--gold-soft);color:var(--gold);}
-.mobile-nav .mob-cta{background:linear-gradient(135deg,var(--gold2),var(--gold))!important;color:white!important;font-weight:700!important;margin-top:8px;border-radius:10px;justify-content:center;}
+.mobile-nav button,.mobile-nav a{
+  width:100%;text-align:left;padding:13px 16px;border-radius:10px;
+  border:none;background:none;cursor:pointer;font-family:var(--fb);
+  font-size:15px;color:var(--slate);font-weight:500;transition:all .2s;
+  text-decoration:none;display:flex;align-items:center;gap:12px;
+}
+.mobile-nav button:hover,.mobile-nav a:hover{background:var(--gold-soft);color:var(--gold);}
+.mobile-nav .mob-divider{height:1px;background:var(--light2);margin:6px 0;}
+.mobile-nav .mob-cta{
+  background:linear-gradient(135deg,var(--gold2),var(--gold))!important;
+  color:white!important;font-weight:700!important;
+  margin-top:4px;border-radius:10px;
+  justify-content:center;
+  box-shadow:0 4px 14px rgba(184,145,42,.3);
+}
 
 /* ── LARGE DESKTOP ≤ 1280px ── */
 @media(max-width:1280px){
@@ -321,6 +348,8 @@ footer a{color:var(--gold);text-decoration:none;}
 
 /* ── LAPTOP / SMALL DESKTOP ≤ 1024px ── */
 @media(max-width:1024px){
+  .nav-links{display:none !important;}
+  .hamburger{display:flex !important;}
   .wrap,.nav-inner,.hero-inner{padding-left:24px;padding-right:24px;}
   .hero h1{font-size:48px;}
   .stitle{font-size:38px;}
@@ -346,9 +375,10 @@ footer a{color:var(--gold);text-decoration:none;}
 
 /* ── TABLET PORTRAIT ≤ 768px ── */
 @media(max-width:768px){
-  /* NAV */
-  .nav-links{display:none;}
-  .hamburger{display:flex;}
+  /* NAV — hide links, show hamburger */
+  .nav-links{display:none !important;}
+  .hamburger{display:flex !important;}
+  .nav-inner{height:62px;padding:0 16px;}
 
   .wrap,.nav-inner,.hero-inner{padding-left:20px;padding-right:20px;}
   .section{padding:64px 0;}
@@ -503,7 +533,10 @@ footer a{color:var(--gold);text-decoration:none;}
   <div class="nav-inner">
     <div class="logo" onclick="showPage('home')">
       <div class="logo-box"><span class="logo-i">i</span></div>
-      <div><span class="logo-name">Solutions</span><span class="logo-sub">Retail Technology</span></div>
+      <div>
+        <span class="logo-name">i Solutions</span>
+        <span class="logo-sub">Point of Sale &amp; Retail Technology</span>
+      </div>
     </div>
     <ul class="nav-links">
       <li><button onclick="showPage('home')" id="nav-home" class="active">Home</button></li>
@@ -521,12 +554,13 @@ footer a{color:var(--gold);text-decoration:none;}
 
 <!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav" id="mobileNav">
-  <button onclick="showPage('home');closeMobileNav()"><i class="fas fa-house" style="color:var(--gold);width:18px"></i> Home</button>
-  <button onclick="showPage('modules');closeMobileNav()"><i class="fas fa-grip" style="color:var(--gold);width:18px"></i> Modules</button>
-  <button onclick="showPage('workflow');closeMobileNav()"><i class="fas fa-route" style="color:var(--gold);width:18px"></i> How It Works</button>
-  <button onclick="showPage('roles');closeMobileNav()"><i class="fas fa-users" style="color:var(--gold);width:18px"></i> Staff Roles</button>
-  <button onclick="showPage('why');closeMobileNav()"><i class="fas fa-trophy" style="color:var(--gold);width:18px"></i> Why Us</button>
-  <button class="mob-cta" onclick="showPage('contact');closeMobileNav()"><i class="fas fa-paper-plane"></i> Get a Demo</button>
+  <button onclick="showPage('home');closeMobileNav()"><i class="fas fa-house" style="color:var(--gold);width:20px;text-align:center"></i> Home</button>
+  <button onclick="showPage('modules');closeMobileNav()"><i class="fas fa-th-large" style="color:var(--gold);width:20px;text-align:center"></i> Modules</button>
+  <button onclick="showPage('workflow');closeMobileNav()"><i class="fas fa-route" style="color:var(--gold);width:20px;text-align:center"></i> How It Works</button>
+  <button onclick="showPage('roles');closeMobileNav()"><i class="fas fa-users" style="color:var(--gold);width:20px;text-align:center"></i> Staff Roles</button>
+  <button onclick="showPage('why');closeMobileNav()"><i class="fas fa-star" style="color:var(--gold);width:20px;text-align:center"></i> Why Choose Us</button>
+  <div class="mob-divider"></div>
+  <button class="mob-cta" onclick="showPage('contact');closeMobileNav()"><i class="fas fa-paper-plane"></i>&nbsp; Get a Free Demo</button>
 </div>
 
 <!-- ═══════════════════════════════════════
@@ -542,12 +576,12 @@ footer a{color:var(--gold);text-decoration:none;}
     <div class="hero-grid"></div>
     <div class="hero-inner">
       <div class="fade">
-        <div class="hero-badge"><i class="fas fa-star fa-xs"></i>&nbsp; v4.3 Enterprise · POS Platform</div>
-        <h1>Retail <em>Precision</em><br>Built for Speed<br>&amp; Profit</h1>
-        <p class="hero-desc">An integrated retail management platform purpose-built for accuracy, speed, and profitability — from cashier counter to executive boardroom.</p>
+        <div class="hero-badge"><i class="fas fa-star fa-xs"></i>&nbsp; Trusted Retail POS System · Saudi Arabia</div>
+        <h1>The Smart POS<br>for <em>Growing</em><br>Retail Stores</h1>
+        <p class="hero-desc">i Solutions gives your store a complete Point of Sale system — sell faster, track every product, manage staff, and see your profits live. Built for retail businesses in Saudi Arabia.</p>
         <div class="hero-btns">
-          <button class="btn-primary" onclick="showPage('modules')"><i class="fas fa-grip"></i> Explore Modules</button>
-          <button class="btn-outline" onclick="showPage('contact')"><i class="fas fa-paper-plane"></i> Get a Demo</button>
+          <button class="btn-primary" onclick="showPage('contact')"><i class="fas fa-paper-plane"></i> Get a Free Demo</button>
+          <button class="btn-outline" onclick="showPage('modules')"><i class="fas fa-th-large"></i> See All Features</button>
         </div>
         <div class="hero-stats">
           <div><span class="stat-n">13+</span><span class="stat-l">Modules</span></div>
@@ -1286,18 +1320,22 @@ footer a{color:var(--gold);text-decoration:none;}
 function toggleMobileNav(){
   const mn=document.getElementById('mobileNav');
   const hb=document.getElementById('hamburger');
+  const isOpen=mn.classList.contains('open');
   mn.classList.toggle('open');
   hb.classList.toggle('open');
+  // prevent body scroll when menu open
+  document.body.style.overflow = isOpen ? '' : 'hidden';
 }
 function closeMobileNav(){
   document.getElementById('mobileNav').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow='';
 }
 // close drawer when clicking outside
 document.addEventListener('click',function(e){
   const mn=document.getElementById('mobileNav');
   const hb=document.getElementById('hamburger');
-  if(mn.classList.contains('open') && !mn.contains(e.target) && !hb.contains(e.target)){
+  if(mn && hb && mn.classList.contains('open') && !mn.contains(e.target) && !hb.contains(e.target)){
     closeMobileNav();
   }
 });
